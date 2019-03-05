@@ -1,12 +1,17 @@
+//import React and ReactDOM libs
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// Create a react component: can be function based OR class based
+const App = () => {
+    return (
+        <div>
+            <h1>I want donuts!</h1>
+        </div>
+    );
+}
+// Render the created component 
+ReactDOM.render(
+    <App />,
+    document.querySelector('#root')
+);
