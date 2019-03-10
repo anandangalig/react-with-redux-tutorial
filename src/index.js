@@ -25,7 +25,7 @@ class App extends React.Component {
         componentWillUnmount() { // do clean-up here
             console.log('componentWillUnmount');
         } 
-        // Rarely used LIFECYCLE methods:
+    // Rarely used LIFECYCLE methods:
         // shouldComponentUpdate() {}
         // getSnapshotBeforeUpdate() {}
         // getDerivedStateFromProps() {}
