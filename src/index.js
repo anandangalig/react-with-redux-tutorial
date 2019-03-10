@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay';
+import Loading from './Loading';
 
 class App extends React.Component {
     // constructor(props) {
@@ -32,17 +33,22 @@ class App extends React.Component {
         
 
 //=============================================================================================
-
-    // render() should only return some JSX, no business logic here because it will be called many times.
-    render() {
+    renderContent = () => {
         if(this.state.lat && !this.state.errorMessage) {
             return (<SeasonDisplay lat={this.state.lat} />);
         }
         if(!this.state.lat && this.state.errorMessage) {
            return (<div>Error: {this.state.errorMessage}</div>);
-        }
-        return (<div>Loading...</div>);
-        
+        }        
+        return (<Loading message='Please allow location check to see the message'/>);
+    }    
+    // render() should only return some JSX, no business logic here because it will be called many times.
+    render() {
+        return(
+            <div className='common-class-that-all-conditional-markup-requires'>
+                {this.renderContent()}
+            </div>
+        )
     }
 }
 
