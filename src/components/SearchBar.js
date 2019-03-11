@@ -14,9 +14,10 @@ class SearchBar extends React.Component {
     }   
 
     onFormSubmit(event) {
-        event.preventDefault();
-        console.log(this.state.searchTerm);
         // this is undefined here. Why? Because reference to onFormSubmit is passed as a callback, thus losing the this.
+        event.preventDefault();
+        // this.props has the methods passed in from parent App. Using it to invoke a parent method and pass data fro child:
+        this.props.onFormSubmit(this.state.searchTerm);
     }
 
     render() {
