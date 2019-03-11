@@ -1,17 +1,28 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-    state = {searchTerm: ''};
-    
+    constructor(props) {
+        super(props)
+        this.state = {searchTerm: ''};
+        this.onFormSubmit = this.onFormSubmit.bind(this);
+        // grab this, recreate the method thats bound to it. So, when constructor method is ran as the component is instantiated, onFormSubmit() will have its this keyword fixed to the original class. In result, we can refer to this inside onFormSubmit()
+    }
+
     onInputChange(event) {
         // event object is automatically passed from the onChange callback function
         console.log(event.target.value);
     }   
 
+    onFormSubmit(event) {
+        event.preventDefault();
+        console.log(this.state.searchTerm);
+        // this is undefined here. Why? Because reference to onFormSubmit is passed as a callback, thus losing the this.
+    }
+
     render() {
         return(
             <div className='ui segment'>
-                <form className='ui form'>
+                <form onSubmit={this.onFormSubmit} className='ui form'>
                     <div className='field'>
                         <label>Image Search</label>
                         <input 
