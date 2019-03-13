@@ -7,16 +7,12 @@ class SearchBar extends React.Component {
         this.onFormSubmit = this.onFormSubmit.bind(this);
         // grab this, recreate the method thats bound to it. So, when constructor method is ran as the component is instantiated, onFormSubmit() will have its this keyword fixed to the original class. In result, we can refer to this inside onFormSubmit()
     }
-
-    onInputChange(event) {
-        // event object is automatically passed from the onChange callback function
-        console.log(event.target.value);
-    }   
-
+    
     onFormSubmit(event) {
+        // event object is automatically passed from the onChange callback function
         // this is undefined here. Why? Because reference to onFormSubmit is passed as a callback, thus losing the this.
         event.preventDefault();
-        // this.props has the methods passed in from parent App. Using it to invoke a parent method and pass data fro child:
+        // this.props has the methods passed in from parent App. Using it to invoke a parent method and pass data from child:
         this.props.onFormSubmit(this.state.searchTerm);
     }
 
